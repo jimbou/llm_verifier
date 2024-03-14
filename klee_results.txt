@@ -1,5 +1,5 @@
 KLEE: NOTE: Using klee-uclibc : /tmp/klee_build130stp_z3/runtime/lib/klee-uclibc.bca
-KLEE: output directory is "/home/klee/verification/klee-out-6"
+KLEE: output directory is "/home/klee/verification/klee-out-9"
 KLEE: Using STP solver backend
 KLEE: SAT solver: MiniSat
 warning: Linking two modules of different target triples: 'verification/klee_analysis.bc' is 'x86_64-unknown-linux-gnu' whereas '__uClibc_main.os' is 'x86_64-pc-linux-gnu'
@@ -13,7 +13,7 @@ KLEE: WARNING: undefined reference to function: ioctl
 KLEE: WARNING: undefined reference to function: open
 KLEE: WARNING: undefined reference to function: write
 KLEE: WARNING: undefined reference to function: kill (UNSAFE)!
-KLEE: WARNING ONCE: calling external: ioctl(0, 21505, 110568783505856) at libc/termios/tcgetattr.c:43 12
+KLEE: WARNING ONCE: calling external: ioctl(0, 21505, 97998663163104) at libc/termios/tcgetattr.c:43 12
 KLEE: WARNING ONCE: calling __user_main with extra arguments.
 KLEE: ERROR: verification/klee_analysis.c:37: ASSERTION FAIL: fib >= 0
 KLEE: NOTE: now ignoring this error at this location

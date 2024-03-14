@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  klee:
+    image: "yourusername/klee_image:latest"
+    container_name: klee_container  # Custom name for the Klee container
+    # Additional configurations for Klee...
+
+  infer:
+    build:
+      context: ./path/to/infer/dockerfile
+      dockerfile: Dockerfile
+    image: "infer_image:latest"
+    container_name: infer_container  # Custom name for the Infer container
+    # Additional configurations for Infer...
