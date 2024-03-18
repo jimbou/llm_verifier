@@ -1,15 +1,24 @@
 version: '3.8'
 
 services:
-  klee:
-    image: "yourusername/klee_image:latest"
-    container_name: klee_container  # Custom name for the Klee container
-    # Additional configurations for Klee...
+  manager:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: manager_container
 
   infer:
     build:
-      context: ./path/to/infer/dockerfile
-      dockerfile: Dockerfile
-    image: "infer_image:latest"
-    container_name: infer_container  # Custom name for the Infer container
-    # Additional configurations for Infer...
+      context: .
+      dockerfile: Dockerfile2
+    # Assuming no special runtime requirements; add them as needed
+    container_name: infer_container
+
+  klee:
+    image: "klee/klee:3.0"
+    # Assuming no special runtime requirements; add them as needed
+    container_name: klee_container
+
+# Define any necessary networks or volumes here
