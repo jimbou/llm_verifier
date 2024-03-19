@@ -7,7 +7,7 @@ int main(){
 
     // necessary klee assumes
     klee_assume(n >= 0); // Assume n is positive or zero
-
+    klee_assume(n < 45); //assume n <45 for overflows
     // call the function with the symbolic parameter
     int fib = fibonacci(n);
 
@@ -19,4 +19,5 @@ int main(){
 
     return 0;
 }
+//
 //

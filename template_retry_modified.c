@@ -2,8 +2,30 @@
 
 //it produced these errors:
 /*
-assertion failed: result >= 0
-assertion failed:  result >= n-1
+Klee_error : 
+Error: ASSERTION FAIL: fib >= 0
+File: verification/klee_analysis.c
+Line: 36
+assembly.ll line: 667
+State: 4
+Stack: 
+	#000000667 in __user_main() at verification/klee_analysis.c:36
+	#100000378 in __uClibc_main(98269126265920, 1, 98269125711248, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#200000550 in main(1, 98269125711248)
+
+ktest file : 'klee-last/test000001.ktest'
+args       : ['verification/klee_analysis.bc']
+num objects: 1
+object 0: name: 'n'
+object 0: size: 4
+object 0: data: b'\x02\x00\x00\x00'
+object 0: hex : 0x02000000
+object 0: int : 2
+object 0: uint: 2
+object 0: text: ....
+
+
+Infer_error : 
 
 
 */
@@ -30,7 +52,7 @@ int fibonacci(int n) {
 
     int a = 0, b = 1, c;
     for(int i = 2; i <= n; i++) {
-        c = a + b;
+        c = a - b;
         a = b;
         b = c;
     }

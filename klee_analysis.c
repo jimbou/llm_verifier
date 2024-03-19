@@ -1,7 +1,6 @@
-#include <klee/klee.h>
 
 int fibonacci(int n) {
-    //check that the input is positive
+    // Check that the input is positive
     if (n < 0) {
         return -1; // Invalid input
     } else if (n == 0) {
@@ -11,8 +10,8 @@ int fibonacci(int n) {
     }
 
     int a = 0, b = 1, c;
-    for(int i = 2; i <= n; i++) {
-        c = a + b;
+    for (int i = 2; i <= n; i++) {
+        c = a + b; // Correct calculation of Fibonacci sequence
         a = b;
         b = c;
     }
@@ -29,7 +28,7 @@ int main(){
 
     // necessary klee assumes
     klee_assume(n >= 0); // Assume n is positive or zero
-
+    klee_assume(n < 45); //assume n <45 for overflows
     // call the function with the symbolic parameter
     int fib = fibonacci(n);
 
@@ -41,4 +40,5 @@ int main(){
 
     return 0;
 }
+//
 //

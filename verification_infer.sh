@@ -14,8 +14,9 @@ docker cp infer_analysis.c $CONTAINER:/infer-examples/
 rm -rf infer_report.txt
 # Execute the analysis
 docker exec $CONTAINER /bin/bash -c "cd /infer-examples; infer -- clang -c infer_analysis.c >infer_report.txt"
-
+rm -rf error_report_infer.txt
 # Copy the result back
+docker cp $CONTAINER:/infer-examples/infer-out/report.txt ./error_report_infer.txt
 docker cp $CONTAINER:/infer-examples/infer_report.txt .
 
 docker stop $CONTAINER

@@ -25,8 +25,16 @@ with open('necessary_include.txt', 'r') as file:
 with open('klee_main.c', 'r') as file:
     var5 = file.read()
 
-with open('error_report.txt', 'r') as file:
+with open('error_report_klee.txt', 'r') as file:
     var6 = file.read()
+with open('error_report_infer.txt', 'r') as file:
+    var7 = file.read()
+
+    
+#concate var6 and var7 with new line between them and the senetnce Klee_error : at the beggining and Infer_error betwween the 2 vars
+var6 = "Klee_error : \n" + var6
+var7 = "Infer_error : \n" + var7
+var6 = var6 + "\n" + var7
 
 # Remove trailing '}' possibly followed by whitespaces from var1
 

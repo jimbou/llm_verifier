@@ -1,4 +1,5 @@
 import requests
+import sys
 
 def call_chatgpt(input_file, output_file, api_key):
     # Step 1: Read the contents of the input file
@@ -34,9 +35,16 @@ def call_chatgpt(input_file, output_file, api_key):
 # Replace 'YOUR_API_KEY_HERE' with your actual OpenAI API key
 api_key = "sk-PSC7IwtfJEFasf6wCvdgT3BlbkFJQF1KmNSkbFAtfhMxE0Kv0"
 
+ #Check if the user has provided a filename as an argument
+if len(sys.argv) < 3:
+    print("Usage: python script.py <filename1> <filename2>")
+    sys.exit(1)
+
+
+
 # Specify the input and output files
-input_file = "template_modified.c"  # This file should contain your prompt/message
-output_file = "response.c"
+input_file = sys.argv[1]  # This file should contain your prompt/message
+output_file = sys.argv[2]
 
 # Call the function with the specified input and output files
 call_chatgpt(input_file, output_file, api_key)
