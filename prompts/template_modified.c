@@ -1,19 +1,13 @@
 
-/*Desired output: the nth fibonacci number
+/*Desired output: 
 */
-/*Relevant Context: the input n should be positive or 0 and the result should be >=0 and >= n-1
+/*Relevant Context: 
 */
 
 
 //start_function pls keep this comment in your response
 
 
-int fibonacci(int n) {
-    //check that the input is positive
-    if (n < 0) {
-        return -1;
-    }
-    //find the nth fibonacci number
 
     //please fill the rest of the code
 

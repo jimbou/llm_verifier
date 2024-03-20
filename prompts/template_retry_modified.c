@@ -11,8 +11,8 @@ State: 3
 Stack: 
 	#000000576 in fibonacci(n=symbolic) at verification/klee_analysis.c:10
 	#100000655 in __user_main() at verification/klee_analysis.c:34
-	#200000377 in __uClibc_main(102649030650960, 1, 102649030120848, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
-	#300000549 in main(1, 102649030120848)
+	#200000377 in __uClibc_main(95399398657104, 1, 95399398126992, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000549 in main(1, 95399398126992)
 Info: 
   size expr: (Mul w64 4
                        (ZExt w64 (Add w32 2
@@ -39,11 +39,11 @@ State: 2
 Stack: 
 	#000000581 in fibonacci(n=symbolic) at verification/klee_analysis.c:13
 	#100000655 in __user_main() at verification/klee_analysis.c:34
-	#200000377 in __uClibc_main(102649030650960, 1, 102649030120848, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
-	#300000549 in main(1, 102649030120848)
+	#200000377 in __uClibc_main(95399398657104, 1, 95399398126992, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000549 in main(1, 95399398126992)
 Info: 
 	address: 0
-	next: object at 102649007861504 of size 768
+	next: object at 95399375867648 of size 768
 		MO127[768] allocated at global:__C_ctype_b_data
 
 ktest file : 'klee-last/test000002.ktest'
@@ -65,11 +65,11 @@ State: 1
 Stack: 
 	#000000583 in fibonacci(n=symbolic) at verification/klee_analysis.c:14
 	#100000655 in __user_main() at verification/klee_analysis.c:34
-	#200000377 in __uClibc_main(102649030650960, 1, 102649030120848, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
-	#300000549 in main(1, 102649030120848)
+	#200000377 in __uClibc_main(95399398657104, 1, 95399398126992, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000549 in main(1, 95399398126992)
 Info: 
-	address: 102649035137028
-	next: object at 102649007861504 of size 768
+	address: 95399403143172
+	next: object at 95399375867648 of size 768
 		MO127[768] allocated at global:__C_ctype_b_data
 
 ktest file : 'klee-last/test000003.ktest'
@@ -91,10 +91,10 @@ Infer_error :
 //end of errors
 //Pls correct the errors by changing the code accordingly 
 
-/*Desired output: the nth fibonacci number
+/*Desired output: 
 */
-/*Relevant Context: the input n should be positive or 0 and the result should be >=0 and >= n-1
-maybe there are overflows. keep the n small maybe <=40
+/*Relevant Context: 
+The errors are possibly caused by overflows .Pls make sure that n for klee is relatively small around up to 40. Also dont use a table in the function but intermidiate vars
 */
 
 //the below code produced errors
