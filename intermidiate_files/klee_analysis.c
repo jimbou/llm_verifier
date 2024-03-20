@@ -1,3 +1,4 @@
+#include <klee/klee.h>
 
 int fibonacci(int n) {
     // Check that the input is positive

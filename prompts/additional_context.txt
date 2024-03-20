@@ -1,0 +1,1 @@
+the input n should be positive or 0 and the result should be >=0 and >= n-1

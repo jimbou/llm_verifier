@@ -11,9 +11,9 @@ manual = sys.argv[1]
 retry = sys.argv[2]
 
 if retry == 'true':
-    filename = 'llm_re_response.c'
+    filename = '../llm_re_response.c'
 else:
-    filename = 'llm_response.c'
+    filename = '../llm_response.c'
 
 
 # Function to read the content between two markers
@@ -27,9 +27,10 @@ def read_content_between(file_contents, start_marker, end_marker):
 # call another python script
 if manual == 'false':
     if retry == 'true':
-        os.system('python3 gpt_call.py  template_retry_modified.c llm_re_responce.c')
+        os.system('python3 gpt_call.py  ../prompts/template_retry_modified.c ../llm_re_responce.c')
     else:
-        os.system('python3 gpt_call.py template_modified.c llm_response.c')
+        os.system('python3 gpt_call.py ../prompts/template_modified.c ../llm_response.c')
+    input("Press Enter after you have made sure the api call works ...")
 else:
     if retry == 'true':
         print("Pls fill your repsone from the llm in the file llm_re_response.c")
@@ -53,12 +54,19 @@ def write_to_file(filename, data):
     with open(filename, 'w') as file:
         file.write(data)
 
+if os.path.exists('../intermidiate_files/infer_analysis.c'):
+    os.remove('../intermidiate_files/infer_analysis.c')
+if os.path.exists('../intermidiate_files/klee_main.c'):
+    os.remove('../intermidiate_files/klee_main.c')
+if os.path.exists('../intermidiate_files/klee_analysis.c'):
+    os.remove('../intermidiate_files/klee_analysis.c')
+
 # Write var1 to 'infer_analysis.c'
-write_to_file('infer_analysis.c', var1)
-write_to_file('klee_main.c', var2)
+write_to_file('../intermidiate_files/infer_analysis.c', var1)
+write_to_file('../intermidiate_files/klee_main.c', var2)
 
 # Format content for 'klee_analysis.c' and write
-klee_content = f'\n{var1}\n\n{var2}'
-write_to_file('klee_analysis.c', klee_content)
+klee_content = f'#include <klee/klee.h>\n\n{var1}\n\n{var2}'
+write_to_file('../intermidiate_files/klee_analysis.c', klee_content)
 
-print("Files 'infer_analysis.c' and 'klee_analysis.c' and klee_main.c have been successfully created.")
+print("Files 'infer_analysis.c' and 'klee_analysis.c' and klee_main.c have been successfully created in the intermidiate_files folder.")

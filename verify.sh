@@ -13,6 +13,7 @@ num2=$1
 manual=$2
 
 echo "This is our first run"
+cd scripts
 ./total_runner.sh "$manual" false
 
 # Correct syntax for the while loop condition
@@ -22,8 +23,8 @@ while true; do
     
 
     # Path to the files you want to check
-    file1="error_report_klee.txt"
-    file2="error_report_infer.txt"
+    file1="../reports/error_report_klee.txt"
+    file2="../reports/error_report_infer.txt"
 
     # Check if file1 contains the word "error" (case-sensitive; use 'Error' if looking for exactly 'Error')
     if grep -qi "error" "$file1"; then
@@ -48,7 +49,9 @@ while true; do
         # Increase the value of num1 by 1
         num1=$((num1 + 1))
     else
-        echo "No errors found, the code provided by the llm has been verified"
+        rm -rf ../verified.c
+        cp ../intermidiate_files/infer_analysis.c ../verified.c
+        echo "No errors found, the code provided by the llm has been verified and can be found in verified.c"
         exit 0
     fi
 done

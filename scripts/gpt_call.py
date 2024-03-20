@@ -13,7 +13,7 @@ def call_chatgpt(input_file, output_file, api_key):
         "Authorization": f"Bearer {api_key}"
     }
     payload = {
-        "model": "gpt-3.5", #change it to 4
+        "model": "gpt-4", #change it to 4
         "messages": [{"role": "user", "content": prompt}]
     }
 
@@ -33,7 +33,7 @@ def call_chatgpt(input_file, output_file, api_key):
         file.write(chat_response)
 
 # Replace 'YOUR_API_KEY_HERE' with your actual OpenAI API key
-api_key = "sk-PSC7IwtfJEFasf6wCvdgT3BlbkFJQF1KmNSkbFAtfhMxE0Kv0"
+api_key = "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"
 
  #Check if the user has provided a filename as an argument
 if len(sys.argv) < 3:

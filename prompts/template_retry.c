@@ -11,6 +11,7 @@
 /*Desired output: placeholder1
 */
 /*Relevant Context: placeholder2
+placeholder7
 */
 
 //the below code produced errors

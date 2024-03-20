@@ -4,7 +4,7 @@ services:
   manager:
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./dockerfiles/Dockerfile
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: manager_container
@@ -12,7 +12,7 @@ services:
   infer:
     build:
       context: .
-      dockerfile: Dockerfile2
+      dockerfile: ./dockerfiles/Dockerfile2
     # Assuming no special runtime requirements; add them as needed
     container_name: infer_container
 

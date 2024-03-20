@@ -13,7 +13,7 @@ warning: Linking two modules of different target triples: 'klee_overshift_check6
 [0m[0;35mKLEE: WARNING: undefined reference to function: open
 [0m[0;35mKLEE: WARNING: undefined reference to function: write
 [0m[0;35mKLEE: WARNING: undefined reference to function: kill (UNSAFE)!
-[0m[0;1;35mKLEE: WARNING ONCE: calling external: ioctl(0, 21505, 105593661275216) at libc/termios/tcgetattr.c:43 12
+[0m[0;1;35mKLEE: WARNING ONCE: calling external: ioctl(0, 21505, 110836187823184) at libc/termios/tcgetattr.c:43 12
 [0m[0;1;35mKLEE: WARNING ONCE: calling __user_main with extra arguments.
 [0m[0;1;32m
 KLEE: done: total instructions = 17119
