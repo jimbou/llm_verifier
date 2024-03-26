@@ -1,10 +1,11 @@
 #!/bin/bash
 INFER_IMAGE_NAME="infer_image"
-CONTAINER="infer_runner"
+CONTAINER="infer_container1"
 
 # Ensure the infer container is running
-docker run -dit --name $CONTAINER $INFER_IMAGE_NAME /bin/bash
+# docker run -dit --name $CONTAINER $INFER_IMAGE_NAME /bin/bash
 
+echo "Running infer analysis"
 # Create the directory
 docker exec $CONTAINER mkdir -p /infer-examples
 

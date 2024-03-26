@@ -66,7 +66,9 @@ Using the information provided, the tool crafts a prompt using `template.c` and 
 
 By adhering to these guidelines, you can effectively utilize the verification tool to ensure your code meets the desired standards and functions as expected.
 
-
+## Example Video Tutorial : Sort 5 numbers
+Here you can find an example tutorial video on how to use the tool:
+  [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wKydsmQ2hzwc/maxresdefault.jpg)](https://www.youtube.com/watch?v=wKydsmQ2hzwc)\
 
 ## Example of verifier use : Fibonacci Function 
 

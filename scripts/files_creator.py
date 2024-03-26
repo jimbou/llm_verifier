@@ -19,7 +19,13 @@ else:
 # Function to read the content between two markers
 def read_content_between(file_contents, start_marker, end_marker):
     start_index = file_contents.find(start_marker) + len(start_marker)
+    # Move the start index to the beginning of the next line after start_marker
+    start_index = file_contents.find('\n', start_index) + 1 if start_index != -1 else -1
+    
     end_index = file_contents.find(end_marker)
+    # Move the end index to the beginning of the line where end_marker is found
+    end_index = file_contents.rfind('\n', 0, end_index) if end_index != -1 else -1
+
     if start_index != -1 and end_index != -1 and start_index < end_index:
         return file_contents[start_index:end_index].strip()
     return ''
@@ -45,7 +51,13 @@ with open(filename, 'r') as file:
 
 # Extract content for var1 and var2
 var1 = read_content_between(content, 'start_function', 'end_function')
+var1 = var1.replace('#include <klee/klee.h>', '')
+var1 = var1.replace('```c', '')
+var1 = var1.replace('```', '')
+
 var2 = read_content_between(content, 'start_main', 'end_main')
+var2 = var2.replace('```c', '')
+var2 = var2.replace('```', '')
 
 # Function to create or overwrite a file with specified content
 def write_to_file(filename, data):

@@ -23,14 +23,26 @@ while true; do
     
 
     # Path to the files you want to check
-    file1="../reports/error_report_klee.txt"
+    file1="../reports/klee_results.txt"
     file2="../reports/error_report_infer.txt"
 
     # Check if file1 contains the word "error" (case-sensitive; use 'Error' if looking for exactly 'Error')
-    if grep -qi "error" "$file1"; then
-        conditionMet=1
-        echo "Error found by klee"
+
+
+    while IFS= read -r line; do
+        if echo "$line" | grep -qi "ERROR:" && ! echo "$line" | grep -qi "invalid klee_assume call"; then
+            conditionMet=1
+            echo "Error found by klee"
+            break # Exit the loop after finding the first relevant error
+        fi
+    done < "$file1"
+
+    if [ "$conditionMet" -eq 1 ]; then
+        echo "Condition met."
+    else
+        echo "No relevant errors found."
     fi
+   
 
     # Check if file2 contains the phrase "Found X issue" where X is a number
     if grep -qE "Found [0-9]+ issue" "$file2"; then
@@ -40,6 +52,8 @@ while true; do
 
     # If any condition is met, perform the retry logic
     if [ $conditionMet -eq 1 ]; then
+        rm -rf ../verified.c
+        cp ../intermidiate_files/infer_analysis.c ../verified.c
         if [ "$num1" -ge "$num2" ]; then
             echo "Exiting: The maximum number of retries has been reached"
             exit 1
@@ -48,6 +62,7 @@ while true; do
         ./total_runner.sh "$manual" true
         # Increase the value of num1 by 1
         num1=$((num1 + 1))
+        
     else
         rm -rf ../verified.c
         cp ../intermidiate_files/infer_analysis.c ../verified.c
