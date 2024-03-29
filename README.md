@@ -69,7 +69,6 @@ By adhering to these guidelines, you can effectively utilize the verification to
 ## Example Video Tutorial : Sort 5 numbers
 Here you can find an example tutorial video on how to use the tool:
   [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wKydsmQ2hzw/maxresdefault.jpg)](https://www.youtube.com/watch?v=wKydsmQ2hzw)\
-  [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ZviLlhq5EFo/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZviLlhq5EFo)\
 
 ## Example of verifier use : Fibonacci Function 
 
