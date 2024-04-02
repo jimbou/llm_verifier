@@ -1,19 +1,13 @@
-int fibonacci(int n) {
-    // Check that the input is positive
-    if (n < 0) {
-        return -1; // Invalid input
-    } else if (n == 0) {
-        return 0; // Base case
-    } else if (n == 1) {
-        return 1; // Base case
+int is_prime(int n) {
+    if (n <= 1) return 0; // 0 and 1 are not prime numbers
+    if (n <= 3) return 1; // 2 and 3 are prime numbers
+    
+    // This is checked so that we can skip middle five numbers in below loop
+    if (n % 2 == 0 || n % 3 == 0) return 0;
+    
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0)
+            return 0;
     }
-
-    int a = 0, b = 1, c;
-    for (int i = 2; i <= n; i++) {
-        c = a + b; // Correct calculation of Fibonacci sequence
-        a = b;
-        b = c;
-    }
-    return b;
+    return 1;
 }
-//

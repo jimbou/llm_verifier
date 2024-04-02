@@ -1,23 +1,19 @@
 #include <klee/klee.h>
 
-int main(){
-    int n;
-    // klee symbolics creation
-    klee_make_symbolic(&n, sizeof(n), "n");
+int main() {
+    int a;
+    klee_make_symbolic(&a, sizeof(a), "a"); // klee symbolics creation
 
-    // necessary klee assumes
-    klee_assume(n >= 0); // Assume n is positive or zero
-    klee_assume(n < 45); //assume n <45 for overflows
-    // call the function with the symbolic parameter
-    int fib = fibonacci(n);
+    klee_assume(a > 0); // necessary klee assumes, prime numbers are positive
+
+    int result = is_prime(a); // call the function with the symbolic parameter
 
     // necessary klee asserts
-    klee_assert(fib >= 0); // Fibonacci numbers are always non-negative
-    if (n > 1) {
-        klee_assert(fib >= n - 1); // For n > 1, fib(n) >= n - 1
-    }
+    // Example assertions for known primes and non-primes for validation
+    if (a == 2 || a == 3 || a == 5 || a == 7)
+        klee_assert(result == 1); // Assert that the function recognizes known primes
+    else if (a == 1 || a == 4 || a == 6 || a == 8 || a == 9)
+        klee_assert(result == 0); // Assert that the function recognizes known non-primes
 
     return 0;
 }
-//
-//

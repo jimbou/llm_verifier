@@ -1,45 +1,35 @@
 #include <klee/klee.h>
 
-int fibonacci(int n) {
-    // Check that the input is positive
-    if (n < 0) {
-        return -1; // Invalid input
-    } else if (n == 0) {
-        return 0; // Base case
-    } else if (n == 1) {
-        return 1; // Base case
+int is_prime(int n) {
+    if (n <= 1) return 0; // 0 and 1 are not prime numbers
+    if (n <= 3) return 1; // 2 and 3 are prime numbers
+    
+    // This is checked so that we can skip middle five numbers in below loop
+    if (n % 2 == 0 || n % 3 == 0) return 0;
+    
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0)
+            return 0;
     }
-
-    int a = 0, b = 1, c;
-    for (int i = 2; i <= n; i++) {
-        c = a + b; // Correct calculation of Fibonacci sequence
-        a = b;
-        b = c;
-    }
-    return b;
+    return 1;
 }
-//
 
 #include <klee/klee.h>
 
-int main(){
-    int n;
-    // klee symbolics creation
-    klee_make_symbolic(&n, sizeof(n), "n");
+int main() {
+    int a;
+    klee_make_symbolic(&a, sizeof(a), "a"); // klee symbolics creation
 
-    // necessary klee assumes
-    klee_assume(n >= 0); // Assume n is positive or zero
-    klee_assume(n < 45); //assume n <45 for overflows
-    // call the function with the symbolic parameter
-    int fib = fibonacci(n);
+    klee_assume(a > 0); // necessary klee assumes, prime numbers are positive
+
+    int result = is_prime(a); // call the function with the symbolic parameter
 
     // necessary klee asserts
-    klee_assert(fib >= 0); // Fibonacci numbers are always non-negative
-    if (n > 1) {
-        klee_assert(fib >= n - 1); // For n > 1, fib(n) >= n - 1
-    }
+    // Example assertions for known primes and non-primes for validation
+    if (a == 2 || a == 3 || a == 5 || a == 7)
+        klee_assert(result == 1); // Assert that the function recognizes known primes
+    else if (a == 1 || a == 4 || a == 6 || a == 8 || a == 9)
+        klee_assert(result == 0); // Assert that the function recognizes known non-primes
 
     return 0;
 }
-//
-//
