@@ -68,7 +68,7 @@ By adhering to these guidelines, you can effectively utilize the verification to
 
 ## Example Video Tutorial : Sort 5 numbers
 Here you can find an example tutorial video on how to use the tool:
-  [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wKydsmQ2hzwc/maxresdefault.jpg)](https://www.youtube.com/watch?v=wKydsmQ2hzwc)\
+  [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wKydsmQ2hzw/maxresdefault.jpg)](https://www.youtube.com/watch?v=wKydsmQ2hzw)\
 
 ## Exaple of verifier use : Prime Checker Function 
 An example of veriier use for a function that checks in a number is prime or not can be found in the e
