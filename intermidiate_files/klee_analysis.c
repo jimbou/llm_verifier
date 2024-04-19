@@ -1,35 +1,39 @@
 #include <klee/klee.h>
 
-int is_prime(int n) {
-    if (n <= 1) return 0; // 0 and 1 are not prime numbers
-    if (n <= 3) return 1; // 2 and 3 are prime numbers
-    
-    // This is checked so that we can skip middle five numbers in below loop
-    if (n % 2 == 0 || n % 3 == 0) return 0;
-    
-    for (int i = 5; i * i <= n; i += 6) {
-        if (n % i == 0 || n % (i + 2) == 0)
-            return 0;
+int find_big(int a, int b, int c) {
+    if (a >= b && a >= c){
+        return a;
     }
-    return 1;
+    else if (b >= a && b >= c){
+        return b;
+    }
+    else {
+        return c;
+    }
 }
 
 #include <klee/klee.h>
 
 int main() {
-    int a;
-    klee_make_symbolic(&a, sizeof(a), "a"); // klee symbolics creation
+    int x, y, z;
+    
+    //klee symbolics creation
+    klee_make_symbolic(&x, sizeof(x), "x");
+    klee_make_symbolic(&y, sizeof(y), "y");
+    klee_make_symbolic(&z, sizeof(z), "z");
+    
+    // call the function with the symbolic parameters
+    int result = find_big(x, y, z);
 
-    klee_assume(a > 0); // necessary klee assumes, prime numbers are positive
+    // create necessary KLEE assumes
+    klee_assume(x >= 0);
+    klee_assume(y >= 0);
+    klee_assume(z >= 0);
 
-    int result = is_prime(a); // call the function with the symbolic parameter
-
-    // necessary klee asserts
-    // Example assertions for known primes and non-primes for validation
-    if (a == 2 || a == 3 || a == 5 || a == 7)
-        klee_assert(result == 1); // Assert that the function recognizes known primes
-    else if (a == 1 || a == 4 || a == 6 || a == 8 || a == 9)
-        klee_assert(result == 0); // Assert that the function recognizes known non-primes
-
+    // necessary KLEE asserts
+    klee_assert(result >= x);
+    klee_assert(result >= y);
+    klee_assert(result >= z);
+    
     return 0;
 }

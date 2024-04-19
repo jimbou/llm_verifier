@@ -1,13 +1,16 @@
 
-/*Desired output: 
+/*Desired output: find the biggest of the 3 numbers
 */
-/*Relevant Context: 
+/*Relevant Context: the result must be bigger or equal to any of the numbers
 */
 
 
 //start_function pls keep this comment in your response
 
 
+int find_big(int a, int b, int c) {
+    //find biggest of 3 numbers
+    
 
     //please fill the rest of the code
 

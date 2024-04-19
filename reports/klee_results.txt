@@ -4,8 +4,6 @@
 [0mKLEE: SAT solver: MiniSat
 [0mwarning: Linking two modules of different target triples: 'verification/klee_analysis.bc' is 'x86_64-unknown-linux-gnu' whereas '__uClibc_main.os' is 'x86_64-pc-linux-gnu'
 
-warning: Linking two modules of different target triples: 'klee_div_zero_check64_Debug+Asserts.bc' is 'x86_64-unknown-linux-gnu' whereas '__uClibc_main.os' is 'x86_64-pc-linux-gnu'
-
 warning: Linking two modules of different target triples: 'klee_overshift_check64_Debug+Asserts.bc' is 'x86_64-unknown-linux-gnu' whereas '__uClibc_main.os' is 'x86_64-pc-linux-gnu'
 
 [0;35mKLEE: WARNING: undefined reference to function: __syscall_rt_sigaction
@@ -15,14 +13,11 @@ warning: Linking two modules of different target triples: 'klee_overshift_check6
 [0m[0;35mKLEE: WARNING: undefined reference to function: open
 [0m[0;35mKLEE: WARNING: undefined reference to function: write
 [0m[0;35mKLEE: WARNING: undefined reference to function: kill (UNSAFE)!
-[0m[0;1;35mKLEE: WARNING ONCE: calling external: ioctl(0, 21505, 105537974608928) at libc/termios/tcgetattr.c:43 12
+[0m[0;1;35mKLEE: WARNING ONCE: calling external: ioctl(0, 21505, 97577422576240) at libc/termios/tcgetattr.c:43 12
 [0m[0;1;35mKLEE: WARNING ONCE: calling __user_main with extra arguments.
-[0mKLEE: ctrl-c detected, requesting interpreter to halt.
-KLEE: ctrl-c detected, requesting interpreter to halt.
-KLEE: halting execution, dumping remaining states
 [0m[0;1;32m
-KLEE: done: total instructions = 14658
-KLEE: done: completed paths = 22
-KLEE: done: partially completed paths = 5
-KLEE: done: generated tests = 27
+KLEE: done: total instructions = 12567
+KLEE: done: completed paths = 5
+KLEE: done: partially completed paths = 0
+KLEE: done: generated tests = 5
 [0m

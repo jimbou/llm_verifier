@@ -1,0 +1,1 @@
+the result must be bigger or equal to any of the numbers
