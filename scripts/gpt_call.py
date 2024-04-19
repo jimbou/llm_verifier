@@ -33,7 +33,7 @@ def call_chatgpt(input_file, output_file, api_key):
         file.write(chat_response)
 
 # Replace 'YOUR_API_KEY_HERE' with your actual OpenAI API key
-api_key = "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"
+api_key = "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"
 
  #Check if the user has provided a filename as an argument
 if len(sys.argv) < 3:
