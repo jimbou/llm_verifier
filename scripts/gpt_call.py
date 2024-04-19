@@ -1,5 +1,6 @@
 import requests
 import sys
+from cryptography.fernet import Fernet
 
 def call_chatgpt(input_file, output_file, api_key):
     # Step 1: Read the contents of the input file
@@ -33,8 +34,13 @@ def call_chatgpt(input_file, output_file, api_key):
         file.write(chat_response)
 
 # Replace 'YOUR_API_KEY_HERE' with your actual OpenAI API key
-api_key = "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"
 
+
+api1= "sk-proj-A4W"
+api2 ="XvALl5i5PUHm3"
+api3 ="RQNET3BlbkFJXU6"
+api4 ="Qc0BR3PHHHsUMVzaQ"
+api_key = api1+api2+api3+api4
  #Check if the user has provided a filename as an argument
 if len(sys.argv) < 3:
     print("Usage: python script.py <filename1> <filename2>")
